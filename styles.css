@@ -580,7 +580,7 @@ main {
     display: grid;
     grid-template-columns: 1fr 1.2fr 1fr;
     grid-template-areas:
-        ". supra ."
+        "supra supra supra"
         "iso central exclusiones"
         "infra infra infra"
         "nota nota nota";
