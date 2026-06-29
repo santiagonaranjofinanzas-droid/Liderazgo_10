@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Interactivo de Liderazgo - Actividad 10</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="topbar" aria-label="Navegación principal">
+        <div class="topbar-inner">
+            <a href="index.html" class="btn-back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+                Volver al portafolio
+            </a>
+            <span class="section-kicker">Actividad 10</span>
+        </div>
+    </nav>
+
+    <main class="map-page-container">
+        <!-- selector tabs -->
+        <div class="mentefacto-selector" role="tablist" aria-label="Selección de Mentefacto">
+            <button class="selector-btn active-tab" data-tab="mentefacto-liderazgo" data-theme="liderazgo" role="tab" aria-selected="true" aria-controls="mentefacto-liderazgo">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="5" r="3"/>
+                    <path d="M12 22V8M5 12h14"/>
+                </svg>
+                Liderazgo Estratégico
+            </button>
+            <button class="selector-btn" data-tab="mentefacto-proceso" data-theme="proceso" role="tab" aria-selected="false" aria-controls="mentefacto-proceso">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                </svg>
+                Proceso Administrativo
+            </button>
+            <button class="selector-btn" data-tab="mentefacto-cambio" data-theme="cambio" role="tab" aria-selected="false" aria-controls="mentefacto-cambio">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21.5 2v6h-6M21.34 8a10 10 0 1 0-.5 4"/>
+                    <path d="M12 8v4l3 3"/>
+                </svg>
+                Administración del Cambio
+            </button>
+        </div>
+
+        <!-- Dashboard Map Container -->
+        <div class="map-dashboard theme-liderazgo" id="dashboard">
+            <!-- Dynamic SVG lines layer -->
+            <svg class="svg-connectors" id="svg-layer">
+                <path class="connection-line active-path active-liderazgo" id="line-supra" d="M0,0 L0,0"></path>
+                <path class="connection-line active-path active-liderazgo" id="line-iso" d="M0,0 L0,0"></path>
+                <path class="connection-line active-path active-liderazgo" id="line-exclusiones" d="M0,0 L0,0"></path>
+                <path class="connection-line active-path active-liderazgo" id="line-infra" d="M0,0 L0,0"></path>
+            </svg>
+
+            <!-- MENTEFACTO 1: LIDERAZGO ESTRATÉGICO -->
+            <div class="mentefacto-container active-container" id="mentefacto-liderazgo" role="tabpanel">
+                <div class="mentefacto-grid">
+                    
+                    <div class="map-node node-supra" id="l-node-supra" data-tag="Supraordinado" data-title="Supraordinado: ¿Qué es?" data-meta="Es la categoría mayor que abarca al concepto. Define el género del liderazgo estratégico en la organización." data-text="Es un tipo de liderazgo organizacional orientado a dirigir la empresa hacia el logro de objetivos de largo plazo mediante una visión compartida.">
+                        <span class="node-kicker">Supraordinado (¿Qué es?)</span>
+                        <h4>Liderazgo Organizacional</h4>
+                        <p>Orientado a dirigir la empresa hacia metas de largo plazo bajo un propósito de visión compartida.</p>
+                    </div>
+
+                    <div class="map-node node-central" id="l-node-central" data-tag="Concepto Central" data-title="Liderazgo Estratégico" data-meta="El núcleo de este mentefacto representa la fusión entre la visión a largo plazo y la capacidad directiva para alinear el talento y los recursos de la empresa." data-text="El Liderazgo Estratégico define la dirección futura de la organización, promoviendo la innovación y adaptabilidad necesarias para sobrevivir en un mercado global y competitivo.">
+                        <span class="node-kicker" style="color: var(--teal);">Concepto Central</span>
+                        <h3>Liderazgo Estratégico</h3>
+                        <p>Dirección y alineación con visión compartida de futuro.</p>
+                    </div>
+
+                    <div class="map-node node-iso" id="l-node-iso" data-tag="Isoordinados" data-title="Isoordinados: Características" data-meta="Las isoordinaciones definen las características inherentes, cualidades y comportamientos que diferencian y caracterizan de forma única al liderazgo estratégico." data-text="Define al líder por sus acciones proactivas: anticipar cambios ambientales, definir la visión y misión rectoras, tomar decisiones críticas bajo incertidumbre, y organizar eficientemente los recursos corporativos para estimular el desarrollo y la innovación constante.">
+                        <span class="node-kicker">Isoordinados (Características)</span>
+                        <h4>Capacidades Rectoras</h4>
+                        <ul>
+                            <li>Anticipa cambios del entorno.</li>
+                            <li>Formula visión y misión.</li>
+                            <li>Toma decisiones estratégicas.</li>
+                            <li>Alinea recursos organizacionales.</li>
+                            <li>Promueve innovación y flexibilidad.</li>
+                            <li>Genera compromiso y orienta el futuro.</li>
+                        </ul>
+                    </div>
+
+                    <div class="map-node node-exclusiones" id="l-node-exclusiones" data-tag="Exclusiones" data-title="Exclusiones: Lo que NO es" data-meta="Las exclusiones delimitan las fronteras conceptuales, indicando aquellas actividades de administración operativa que no corresponden al liderazgo estratégico." data-text="Quedan fuera las labores administrativas rutinarias de corto plazo, la supervisión de tareas mecánicas diarias, y las directrices sin rumbo claro o basadas en la improvisación táctica.">
+                        <span class="node-kicker">Exclusiones (No es)</span>
+                        <h4>Operación Táctica</h4>
+                        <ul>
+                            <li>Administración operativa básica.</li>
+                            <li>Supervisión rutinaria diaria.</li>
+                            <li>Dirección improvisada sin análisis.</li>
+                            <li>Gestión enfocada únicamente en el corto plazo.</li>
+                        </ul>
+                    </div>
+
+                    <div class="map-node node-infra" id="l-node-infra" data-tag="Infraordinados" data-title="Infraordinados: Elementos" data-meta="Los componentes infraordinados especifican las partes constitutivas o variables metodológicas que conforman la aplicación del liderazgo estratégico." data-text="Se constituye a través de siete engranajes fundamentales: la Visión y Misión que definen la dirección, los Valores éticos de soporte, los Objetivos a largo plazo, las Estrategias de mercado, y la posterior Ejecución y Control periódico de desvíos.">
+                        <span class="node-kicker">Infraordinados (Elementos constituyentes - Clic en celdas para detalles)</span>
+                        <div class="infra-container-liderazgo">
+                            <div class="infra-item" data-title="Visión" data-text="La representación del estado futuro deseado para la organización, sirviendo como faro e inspiración.">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                                <span>Visión</span>
+                            </div>
+                            <div class="infra-item" data-title="Misión" data-text="La declaración pública del propósito de la empresa, su razón de ser y su propuesta de valor.">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                                <span>Misión</span>
+                            </div>
+                            <div class="infra-item" data-title="Valores" data-text="Principios éticos y de comportamiento que guían las acciones diarias de los colaboradores y directivos.">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12l4 6-10 13L2 9z"/></svg>
+                                <span>Valores</span>
+                            </div>
+                            <div class="infra-item" data-title="Objetivos" data-text="Los resultados específicos y cuantificables que la organización planea lograr en un plazo determinado.">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                                <span>Objetivos</span>
+                            </div>
+                            <div class="infra-item" data-title="Estrategias" data-text="Las rutas de acción diseñadas para alcanzar los objetivos estratégicos en base al análisis FODA.">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                                <span>Estrategias</span>
+                            </div>
+                            <div class="infra-item" data-title="Ejecución" data-text="La fase práctica donde se implementan los planes, se administran recursos y se moviliza a los equipos.">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                                <span>Ejecución</span>
+                            </div>
+                            <div class="infra-item" data-title="Evaluación" data-text="Monitoreo de resultados utilizando métricas clave de desempeño (KPIs) para asegurar la retroalimentación.">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                                <span>Evaluación</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="map-node node-nota" id="l-node-nota" data-tag="Nota de Síntesis" data-title="Nota Conceptual" data-meta="Resumen crítico explicativo del mentefacto 1." data-text="El liderazgo estratégico trasciende las responsabilidades del mando operativo cotidiano. Exige estructurar una visión ambiciosa pero alcanzable, alineando todos los pilares organizacionales bajo principios de constante innovación y adaptabilidad ante los desafíos externos del macroentorno.">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
+                        </svg>
+                        <p><strong>Nota:</strong> El liderazgo estratégico va más allá de la gestión operativa; se centra en la formulación de una visión clara, la toma de decisiones estratégicas y la creación de un entorno que fomente la innovación, la adaptabilidad y el compromiso.</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- MENTEFACTO 2: PROCESO ADMINISTRATIVO ESTRATÉGICO -->
+            <div class="mentefacto-container" id="mentefacto-proceso" role="tabpanel">
+                <div class="mentefacto-grid">
+                    
+                    <div class="map-node node-supra" id="p-node-supra" data-tag="Supraordinado" data-title="Supraordinado: ¿Qué es?" data-meta="Ubicación conceptual del proceso administrativo estratégico dentro de los sistemas generales de dirección organizacional." data-text="Es un proceso de gestión organizacional continuo que permite formular, ejecutar y evaluar estrategias para alcanzar la visión institucional.">
+                        <span class="node-kicker">Supraordinado (¿Qué es?)</span>
+                        <h4>Proceso de Gestión</h4>
+                        <p>Marco estructurado para formular, ejecutar y evaluar estrategias en pos de la visión institucional.</p>
+                    </div>
+
+                    <div class="map-node node-central" id="p-node-central" data-tag="Concepto Central" data-title="Proceso Administrativo Estratégico" data-meta="Es un sistema cíclico compuesto por fases interdependientes orientadas a transformar planes abstractos en resultados de valor y crecimiento." data-text="El proceso administrativo estratégico permite la supervivencia y competitividad de las organizaciones mediante la alineación de metas, estructuración interna, guías directivas y control de desviaciones.">
+                        <span class="node-kicker" style="color: var(--violet);">Concepto Central</span>
+                        <h3>Proceso Administrativo Estratégico</h3>
+                        <p>Ciclo metodológico de formulación, ejecución y control.</p>
+                    </div>
+
+                    <div class="map-node node-iso" id="p-node-iso" data-tag="Isoordinados" data-title="Isoordinados: Funciones" data-meta="Las funciones isoordinadas detallan las actividades fundamentales del ciclo de administración general adaptadas a nivel estratégico. Clic en las tarjetas para detalles." data-text="Se compone de seis engranajes operativos tradicionales estructurados bajo una óptica estratégica de largo plazo.">
+                        <span class="node-kicker">Isoordinados (Funciones estratégicas)</span>
+                        <div class="functions-grid">
+                            <div class="function-card" data-title="Planeación" data-text="Formulación de visiones a futuro, metas y asignación previa de proyectos y presupuestos de desarrollo.">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12a9 9 0 1 1-9-9"/></svg>
+                                <strong>Planeación</strong>
+                            </div>
+                            <div class="function-card" data-title="Organización" data-text="Diseño e integración de los departamentos, jerarquías y funciones optimizados para la estrategia elegida.">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                <strong>Organización</strong>
+                            </div>
+                            <div class="function-card" data-title="Dirección" data-text="Liderazgo y motivación del personal, guiando las labores del día hacia el propósito de largo plazo.">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+                                <strong>Dirección</strong>
+                            </div>
+                            <div class="function-card" data-title="Coordinación" data-text="Sincronización interdepartamental de tareas y flujos de trabajo para evitar redundancias y fricciones.">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M6.34 17.66l2.83-2.83M14.83 9.17l2.83-2.83"/></svg>
+                                <strong>Coordinación</strong>
+                            </div>
+                            <div class="function-card" data-title="Control" data-text="Establecimiento de estándares de desempeño y monitoreo de variaciones operativas cotidianas.">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                <strong>Control</strong>
+                            </div>
+                            <div class="function-card" data-title="Evaluación" data-text="Contraste periódico de los resultados organizacionales de fin de periodo frente a las metas planificadas inicialmente.">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
+                                <strong>Evaluación</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="map-node node-exclusiones" id="p-node-exclusiones" data-tag="Exclusiones" data-title="Exclusiones: Lo que NO es" data-meta="Límites que delimitan y protegen conceptualmente la rigurosidad del proceso administrativo estratégico." data-text="Se opone frontalmente a las decisiones ad-hoc o reactivas sin planificación previa, la improvisación ante crisis operativas y la total ausencia de métricas o seguimiento a los planes.">
+                        <span class="node-kicker">Exclusiones (No es)</span>
+                        <h4>Desorganización y Reactividad</h4>
+                        <ul>
+                            <li>Actividades improvisadas sin orden metodológico.</li>
+                            <li>Ausencia de planificación estructurada.</li>
+                            <li>Toma de decisiones sin metas u objetivos.</li>
+                            <li>Falta de seguimiento o control a las estrategias.</li>
+                        </ul>
+                    </div>
+
+                    <div class="map-node node-infra" id="p-node-infra" data-tag="Infraordinados" data-title="Infraordinados: Fases del Proceso" data-meta="Estructura metodológica dividida en tres etapas secuenciales conectadas. Clic en las fases para detalles de los elementos." data-text="El proceso se compone de tres bloques interconectados: Planeación (identidad y metas), Ejecución (implementación práctica y recursos) y Evaluación/Control (indicadores de gestión y medidas correctivas).">
+                        <span class="node-kicker">Infraordinados (Fases Operativas Secuenciales)</span>
+                        <div class="roadmap-flow">
+                            <div class="roadmap-step step-planeacion" data-title="Fase 1: Planeación" data-text="Diseño ideológico y conceptual: Definición de la Misión, Visión, Valores organizacionales, formulación de Objetivos estratégicos y estructuración de Planes detallados de mercado.">
+                                <h5>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4z"/></svg>
+                                    1. Planeación
+                                </h5>
+                                <ul>
+                                    <li>Visión y Misión</li>
+                                    <li>Valores rectores</li>
+                                    <li>Objetivos y Planes</li>
+                                </ul>
+                            </div>
+                            <div class="roadmap-arrow">→</div>
+                            <div class="roadmap-step step-ejecucion" data-title="Fase 2: Ejecución" data-text="Puesta en marcha: Ejecución de Programas y Proyectos diseñados, Asignación inteligente de recursos económicos y humanos, e Implementación táctica de estrategias.">
+                                <h5>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                                    2. Ejecución
+                                </h5>
+                                <ul>
+                                    <li>Programas y Proyectos</li>
+                                    <li>Asignación de recursos</li>
+                                    <li>Implementación física</li>
+                                </ul>
+                            </div>
+                            <div class="roadmap-arrow">→</div>
+                            <div class="roadmap-step step-control" data-title="Fase 3: Evaluación y Control" data-text="Supervisión analítica: Establecimiento de Indicadores clave de gestión (KPIs), Comparación del rendimiento real contra el estimado, Acciones correctivas urgentes y consolidación del Balanced Scorecard (BSC).">
+                                <h5>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4L12 14.01l-3-3"/></svg>
+                                    3. Evaluación y Control
+                                </h5>
+                                <ul>
+                                    <li>Indicadores de gestión</li>
+                                    <li>Acciones correctivas</li>
+                                    <li>Cuadro de Mando (BSC)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="map-node node-nota" id="p-node-nota" data-tag="Nota de Síntesis" data-title="Nota Conceptual" data-meta="Resumen crítico explicativo del mentefacto 2." data-text="El proceso administrativo estratégico funciona de manera cíclica e interactiva. No concluye con la evaluación; más bien, esta provee la retroalimentación analítica necesaria para reajustar los planes, modificar la ejecución e impulsar una mejora continua basada en datos objetivos y metas reales.">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 8a10 10 0 1 0-.5 4"/></svg>
+                        <p><strong>Nota:</strong> El proceso administrativo estratégico es cíclico y continuo: inicia con la planeación (visión, misión, valores, objetivos y estrategias), pasa a la ejecución (programas, proyectos y asignación de recursos) y culmina con la evaluación y control para asegurar el cumplimiento de la visión institucional y tomar decisiones de mejora.</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- MENTEFACTO 3: ADMINISTRACIÓN DEL CAMBIO ORGANIZACIONAL -->
+            <div class="mentefacto-container" id="mentefacto-cambio" role="tabpanel">
+                <div class="mentefacto-grid">
+                    
+                    <div class="map-node node-supra" id="c-node-supra" data-tag="Supraordinado" data-title="Supraordinado: ¿Qué es?" data-meta="Marco general de la disciplina que contiene y justifica la administración del cambio en entornos turbulentos." data-text="Es un proceso estratégico de transformación organizacional que facilita la adaptación frente a cambios internos y externos, para mejorar el desempeño y garantizar la sostenibilidad empresarial.">
+                        <span class="node-kicker">Supraordinado (¿Qué es?)</span>
+                        <h4>Transformación Organizacional</h4>
+                        <p>Proceso estratégico que facilita la adaptación interna/externa, mejorando el desempeño y asegurando la sostenibilidad.</p>
+                    </div>
+
+                    <div class="map-node node-central" id="c-node-central" data-tag="Concepto Central" data-title="Administración del Cambio Organizacional" data-meta="Capacidad directiva de estructurar transiciones eficientes en las personas, la cultura y los procesos organizativos." data-text="Se centra en la adecuada gestión de los colaboradores para minimizar la fricción natural y el miedo a la incertidumbre frente a transformaciones operativas, tecnológicas o culturales.">
+                        <span class="node-kicker" style="color: var(--gold);">Concepto Central</span>
+                        <h3>Administración del Cambio</h3>
+                        <p>Estrategia y gestión de transiciones humanas y organizacionales.</p>
+                    </div>
+
+                    <div class="map-node node-iso" id="c-node-iso" data-tag="Isoordinados" data-title="Isoordinados: Aspectos Clave" data-meta="Los aspectos clave de soporte que estructuran y hacen posible el éxito de la transformación organizativa. Clic en las celdas para detalles." data-text="Representan los pilares críticos a coordinar en el personal durante la transición organizacional.">
+                        <span class="node-kicker">Isoordinados (Aspectos Clave)</span>
+                        <div class="aspects-grid">
+                            <div class="aspect-card" data-title="Comunicación" data-text="Información oportuna, veraz y bidireccional que minimice la incertidumbre y erradique falsos rumores.">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                <strong>Comunicación</strong>
+                            </div>
+                            <div class="aspect-card" data-title="Adaptación" data-text="La flexibilidad institucional y de los colaboradores para ajustarse con rapidez a las nuevas realidades y desafíos.">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                <strong>Adaptación</strong>
+                            </div>
+                            <div class="aspect-card" data-title="Innovación" data-text="La apertura cultural para experimentar con ideas disruptivas, flujos novedosos y herramientas alternas.">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>
+                                <strong>Innovación</strong>
+                            </div>
+                            <div class="aspect-card" data-title="Liderazgo" data-text="Líderes empáticos que guíen con el ejemplo, inspiren confianza y acompañen de cerca en las dificultades de la transición.">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                <strong>Liderazgo</strong>
+                            </div>
+                            <div class="aspect-card" data-title="Participación" data-text="Inclusión de los empleados en el co-diseño de las soluciones de cambio, aumentando la apropiación del proyecto.">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                                <strong>Participación</strong>
+                            </div>
+                            <div class="aspect-card" data-title="Compromiso" data-text="El involucramiento emocional y racional del colaborador que despierta el sentido de pertenencia.">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                                <strong>Compromiso</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="map-node node-exclusiones" id="c-node-exclusiones" data-tag="Exclusiones" data-title="Exclusiones: Lo que NO es" data-meta="Límites que delimitan y aíslan conceptualmente la administración planificada del cambio." data-text="Es la antítesis de la inercia, la pasividad burocrática, la resistencia obstinada y el mantenimiento rígido del statu quo a expensas de la viabilidad de la empresa en el mercado.">
+                        <span class="node-kicker">Exclusiones (No es)</span>
+                        <h4>Inercia y Status Quo</h4>
+                        <ul>
+                            <li>Resistencia destructiva y permanente.</li>
+                            <li>Inmovilidad o estancamiento ante crisis.</li>
+                            <li>Falta de comunicación e incertidumbre.</li>
+                            <li>Mantenimiento obstinado del statu quo.</li>
+                        </ul>
+                    </div>
+
+                    <div class="map-node node-infra" id="c-node-infra" data-tag="Infraordinados" data-title="Infraordinados: Metodologías de Cambio" data-meta="Herramientas metodológicas y conductuales para dirigir la transición organizativa. Clic en las tarjetas para detalles." data-text="Se divide en dos herramientas clave: el modelo secuencial de tres fases de Kurt Lewin y las tácticas de mitigación de resistencia para motivar al personal.">
+                        <span class="node-kicker">Infraordinados (Herramientas y Modelos de Implementación)</span>
+                        <div class="cambio-infra-grid">
+                            
+                            <!-- Lewin Model -->
+                            <div class="lewin-model">
+                                <h5>Modelo de Kurt Lewin</h5>
+                                <div class="lewin-steps">
+                                    <div class="lewin-step" data-title="1. Descongelar" data-text="Preparación mental: Desarticular las creencias obsoletas del statu quo, concienciando a los colaboradores sobre la urgencia y necesidad ineludible del cambio.">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+                                        <strong>1. Descongelar</strong>
+                                        <span>Generar conciencia de la necesidad.</span>
+                                    </div>
+                                    <div class="lewin-step" data-title="2. Cambiar" data-text="Transición operativa: Implementación de nuevas conductas, metodologías de trabajo, flujos y tecnologías para migrar al estado deseado.">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 8a10 10 0 1 0-.5 4"/></svg>
+                                        <strong>2. Cambiar</strong>
+                                        <span>Implementar nuevos procesos.</span>
+                                    </div>
+                                    <div class="lewin-step" data-title="3. Recongelar" data-text="Institucionalización: Consolidar e incorporar de manera permanente los nuevos hábitos y procesos a la cultura organizacional diaria.">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                                        <strong>3. Recongelar</strong>
+                                        <span>Consolidar el cambio en la cultura.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Resistance Reduction -->
+                            <div class="resistance-reduction">
+                                <h5>Mitigación de Resistencia</h5>
+                                <div class="resistance-list">
+                                    <div class="resistance-item" data-title="Comunicación Continua" data-text="Explicar con total honestidad el origen, justificación, metas intermedias y beneficios compartidos de la transición de cambio.">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4L12 14.01l-3-3"/></svg>
+                                        Comunicación Continua
+                                    </div>
+                                    <div class="resistance-item" data-title="Capacitación Directa" data-text="Brindar talleres formativos prácticos sobre las nuevas metodologías o sistemas informáticos para dotar de seguridad técnica a los empleados.">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4L12 14.01l-3-3"/></svg>
+                                        Capacitación y Formación
+                                    </div>
+                                    <div class="resistance-item" data-title="Apoyo Activo del Líder" data-text="Acompañar en el área de trabajo, escuchar de forma activa las frustraciones puntuales de la plantilla y guiar con el ejemplo diario.">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4L12 14.01l-3-3"/></svg>
+                                        Apoyo del Líder
+                                    </div>
+                                    <div class="resistance-item" data-title="Empoderamiento Laboral" data-text="Dar autonomía operativa para que los propios empleados propongan ideas de mejora y tomen decisiones sobre la ejecución de su labor.">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4L12 14.01l-3-3"/></svg>
+                                        Empoderamiento
+                                    </div>
+                                    <div class="resistance-item" data-title="Seguimiento y Celebración" data-text="Monitorear con frecuencia el cumplimiento del plan y celebrar públicamente las pequeñas victorias o hitos iniciales logrados en equipo.">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4L12 14.01l-3-3"/></svg>
+                                        Seguimiento de Avances
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="map-node node-nota" id="c-node-nota" data-tag="Nota de Síntesis" data-title="Nota Conceptual" data-meta="Resumen crítico explicativo del mentefacto 3." data-text="La transformación organizacional no ocurre de manera automática ni decretada por la directiva. Exige una conducción empática basada en una comunicación asertiva constante, el involucramiento sincero de las personas afectadas y el desarrollo de liderazgos facilitadores del cambio.">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364.364l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                        <p><strong>Nota:</strong> La administración del cambio no es un evento aislado, sino un proceso continuo que requiere liderazgo, participación y compromiso para lograr una transformación exitosa y sostenible.</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Slide-in Details Drawer -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <div class="info-drawer" id="info-drawer" aria-modal="true" role="dialog">
+        <button class="drawer-close" id="drawer-close" aria-label="Cerrar panel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+        <div class="drawer-content">
+            <span class="drawer-tag drawer-tag-liderazgo" id="drawer-tag">Liderazgo</span>
+            <h3 id="drawer-title">Título del Nodo</h3>
+            <p class="drawer-text" id="drawer-description">
+                Aquí van los detalles estructurados y académicos del mentefacto seleccionado.
+            </p>
+            
+            <div class="drawer-meta-section">
+                <h5>Contexto Académico</h5>
+                <p id="drawer-meta-text">Detalles y referencias teóricas relevantes del tema.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Universidad de las Fuerzas Armadas ESPE - Departamento de Ciencias Humanas y Sociales</p>
+        <p>Dashboard de Mentefactos desarrollado por el Grupo 5</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
